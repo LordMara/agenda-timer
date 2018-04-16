@@ -45,6 +45,14 @@ export class Meeting {
         this.events = filteredEvents;
     }
 
+    estimatedTime() {
+        let time = 0;
+        for (let event of this.events) {
+            time += event.time;
+        }
+        return time;
+    }
+
     static createFromObject(obj) {
         let meeting = new Meeting();
         meeting.id = obj._id;
