@@ -31,6 +31,20 @@ export class Meeting {
         this._events = events;
     }
 
+    addEvent(event) {
+        this.events.push(event);
+    }
+
+    removeEvent(eventId) {
+        let filteredEvents = [];
+        for (let event of this.events) {
+            if (event.id !== id) {
+                filteredEvents.push(event);
+            }
+        }
+        this.events = filteredEvents;
+    }
+
     static createFromObject(obj) {
         let meeting = new Meeting();
         meeting.id = obj._id;
