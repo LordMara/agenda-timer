@@ -16,6 +16,16 @@ class Storage {
         this.save();
     }
 
+    getId() {
+        let id = 1;
+        for (let meeting of this._meetings) {
+            if (meeting.id > id) {
+                id = meeting.id;
+            }
+        }
+        return id;
+    }
+
     save(){
         localStorage.setItem('meetings', JSON.stringify([...this._meetings]))
     }
