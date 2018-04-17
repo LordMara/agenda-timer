@@ -38,7 +38,8 @@ class Storage {
 
     compereMeetings(meeting) {
         for (let existingMeeting of this._meetings) {
-            if (meeting.id === existingMeeting.id) {
+            if (meeting.id === existingMeeting.id && meeting.name === existingMeeting.name &&
+                    meeting.events.length === existingMeeting.events.length) {
                 return true;
             }
         }
