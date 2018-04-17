@@ -24,9 +24,25 @@ class Storage {
         let meetings = JSON.parse(localStorage.getItem('meetings'));
         if(meetings !== null){
             for(let meeting of meetings){
-                this._meetings.add(Meeting.createFromObject(meeting));
+                this.compereAdd(Meeting.createFromObject(meeting));
             }
         }
+    }
+
+    compereAdd(meeting) {
+        if (!this.compereMeetings(meeting)) {
+            this._meetings.add(meeting);
+        }
+        this.save();
+    }
+
+    compereMeetings(meeting) {
+        for (let existingMeeting of this._meetings) {
+            if (meeting.id === existingMeeting.id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
