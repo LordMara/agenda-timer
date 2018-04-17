@@ -5,7 +5,23 @@
     <title>agenda timer</title>
     <script type="module" src="resources/js/app.js" defer></script>
 </head>
+<header>
+    <h1>Agenda timer</h1>
+</header>
 <body>
+    <div id="meetings">
+        <ul>
+            <!--made by js from local storage-->
+        </ul>
+    </div>
+
+    <div id="form-container">
+        <button id="add-even" type="button">+</button>
+        <form class="new-meeting">
+            <input class="event-topic" type="text" name="event-topic" value="Add event topic!">
+            <input class="event-time" type="time" name="event-time" step="1" value="00:00:00">
+        </form>
+    </div>
 
 </body>
 </html>
