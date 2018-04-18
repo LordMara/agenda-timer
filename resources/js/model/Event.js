@@ -24,7 +24,7 @@ export class Event {
 
     render() {
         return `<li>
-                    <p id="name">${this.topic}</p><p id="time">${Timer.renderTime()}</p>
+                    <p id="name">${this.topic}</p><p id="time">${Timer.renderTime(this._time)}</p>
                 </li>`;
     }
 
