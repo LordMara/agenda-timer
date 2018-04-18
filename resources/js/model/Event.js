@@ -20,6 +20,12 @@ export class Event {
         this._time = time;
     }
 
+    render() {
+        return `<li>
+                    <p id="name">${this.topic}</p><p id="time">${this.renderTime()}</p>
+                </li>`;
+    }
+
     static createFromObject(obj){
         let event = new Event();
         Object.assign(event, obj);
