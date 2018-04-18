@@ -31,6 +31,25 @@ export class Meeting {
         this._events = events;
     }
 
+    render() {
+        return `<div id="meeting">
+                    <p id="name">${this.name}</p><p id="time">${this.renderTime()}</p>
+                </div>
+                <div id="events">
+                    <ul>
+                        ${this.renderEvents()}
+                    </ul>
+                </div>`
+    }
+
+    renderEvents() {
+        let renderedEvents = '';
+        for (let event of this.events) {
+            renderedEvents += event.render();
+        }
+        return renderedEvents;
+    }
+
     addEvent(event) {
         this.events.push(event);
     }
@@ -51,6 +70,26 @@ export class Meeting {
             time += event.time;
         }
         return time;
+    }
+
+    renderTime() {
+        let s = Math.floor(this.estimatedTime()/100);
+        let h = 0;
+        let m = 0;
+
+        while (s > 60) {
+            s /= 60;
+            m += 1;
+        }
+        s = Math.floor(s);
+
+        while (m > 60) {
+            m /= 60;
+            h += 1;
+        }
+        m = Math.floor(m);
+
+        return `${h}h ${m}m ${s}s`
     }
 
     static createFromObject(obj) {
