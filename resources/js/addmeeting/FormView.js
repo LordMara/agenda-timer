@@ -19,7 +19,9 @@ export class FormView {
     }
 
     registerEventListeners() {
-        this.element.querySelector('.event-topic').addEventListener('change', this.controller.handleTitleChange.bind(this.controller));
-        this.element.getElementsByClassName('.event-time').addEventListener('change', this.controller.handleTimeChange.bind(this.controller));
+        this.element.querySelector('.event-topic')
+            .addEventListener('change', this.controller.handleTitleChange.bind(this.controller));
+        this.element.getElementsByClassName('.event-time')
+            .addEventListener('change', this.controller.handleTimeChange.bind(this.controller));
     }
 }
