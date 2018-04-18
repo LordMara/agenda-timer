@@ -25,6 +25,22 @@ export class Timer {
         return this._time <= 0;
     }
 
+    stop() {
+        clearInterval(this._timer);
+    }
+
+    start() {
+        let timer = this;
+        this._timer = setInterval(function () {
+            timer.countdown();
+            timer.setClocks();
+
+            if (timer.hasFinished()) {
+                timer.stop();
+            }
+        }, 1000);
+    }
+
     static renderTime(time) {
         let s = time/1000;
         let h = 0;
