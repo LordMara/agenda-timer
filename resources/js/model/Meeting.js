@@ -1,4 +1,5 @@
 import {Event} from "./Event.js";
+import {Timer} from "./Timer.js";
 
 export class Meeting {
     constructor(id, name, events) {
@@ -33,7 +34,7 @@ export class Meeting {
 
     render() {
         return `<div id="meeting">
-                    <p id="name">${this.name}</p><p id="time">${this.renderTime()}</p>
+                    <p id="name">${this.name}</p><p id="time">${Timer.renderTime(this.estimatedTime())}</p>
                 </div>
                 <div id="events">
                     <ul>
@@ -70,26 +71,6 @@ export class Meeting {
             time += event.time;
         }
         return time;
-    }
-
-    renderTime() {
-        let s = Math.floor(this.estimatedTime()/100);
-        let h = 0;
-        let m = 0;
-
-        while (s > 60) {
-            s /= 60;
-            m += 1;
-        }
-        s = Math.floor(s);
-
-        while (m > 60) {
-            m /= 60;
-            h += 1;
-        }
-        m = Math.floor(m);
-
-        return `${h}h ${m}m ${s}s`
     }
 
     static createFromObject(obj) {
