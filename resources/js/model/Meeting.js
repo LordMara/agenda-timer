@@ -31,6 +31,25 @@ export class Meeting {
         this._events = events;
     }
 
+    render() {
+        return `<div id="meeting">
+                    <p id="name">${this.name}</p><p id="time">${this.renderTime()}</p>
+                </div>
+                <div id="events">
+                    <ul>
+                        ${this.renderEvents()}
+                    </ul>
+                </div>`
+    }
+
+    renderEvents() {
+        let renderedEvents = '';
+        for (let event of this.events) {
+            renderedEvents += event.render();
+        }
+        return renderedEvents;
+    }
+
     addEvent(event) {
         this.events.push(event);
     }
