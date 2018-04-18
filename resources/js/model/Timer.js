@@ -1,44 +1,54 @@
 export class Timer {
-    constructor(time, mainTime, clock, mainClock) {
-        this._time = time;
-        this._clock = clock;
-        this._mainTime = mainTime;
-        this._mainClock = mainClock;
-        this._timer = null;
-    }
-
-    countdown() {
-        this._time -= 1000;
-        this._mainTime -= 1000;
-    }
-
-    setClocks() {
-        this._clock.innerHTML = Timer.renderTime(this._time);
-        this._mainClock.innerHTML = Timer.renderTime(this._mainTime);
-    }
-
-    isRunning() {
-        return this._time > 0;
-    }
-
-    hasFinished() {
-        return this._time <= 0;
-    }
-
-    stop() {
-        clearInterval(this._timer);
+    constructor(meetingTime, meetingClock, eventsTimes, eventClocks) {
+        this._meetingTime = meetingTime;
+        this._meetingClock = meetingClock;
+        this._eventsTimes = eventsTimes;
+        this._eventClocks = eventClocks;
+        this._eventIndex = 0;
     }
 
     start() {
         let timer = this;
-        this._timer = setInterval(function () {
+        let stopper = setInterval(function () {
             timer.countdown();
             timer.setClocks();
 
+            if (timer.hasEventEnded()) {
+                timer.nextEvent();
+            }
+
             if (timer.hasFinished()) {
-                timer.stop();
+                clearInterval(stopper);
             }
         }, 1000);
+    }
+
+    countdown() {
+        this._meetingTime -= 1000;
+        this._eventsTimes[this._eventIndex] -= 1000;
+    }
+
+    setClocks() {
+        this._meetingClock.innerHTML = Timer.renderTime(this._meetingTime);
+        this._eventClocks[this._eventIndex].innerHTML = Timer.renderTime(this._eventsTimes[this._eventIndex]);
+    }
+
+    hasEventEnded() {
+        return this._eventsTimes[this._eventIndex] <= 0;
+    }
+
+    nextEvent() {
+        if (this.hasNextEvent()) {
+            this._eventIndex += 1;
+        }
+    }
+
+    hasNextEvent() {
+        return this._eventIndex < this._eventsTimes.length;
+    }
+
+    hasFinished() {
+        return this._meetingTime <= 0;
     }
 
     static renderTime(time) {
