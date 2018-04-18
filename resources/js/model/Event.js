@@ -27,21 +27,19 @@ export class Event {
     }
 
     renderTime() {
-        let s = Math.floor(this.time/100);
+        let s = this.time/1000;
         let h = 0;
         let m = 0;
 
-        while (s > 60) {
-            s /= 60;
+        while (s >= 60) {
+            s -= 60;
             m += 1;
         }
-        s = Math.floor(s);
 
-        while (m > 60) {
-            m /= 60;
+        while (m >= 60) {
+            m -= 60;
             h += 1;
         }
-        m = Math.floor(m);
 
         return `${h}h ${m}m ${s}s`
     }
