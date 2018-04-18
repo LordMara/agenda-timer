@@ -72,6 +72,26 @@ export class Meeting {
         return time;
     }
 
+    renderTime() {
+        let s = Math.floor(this.estimatedTime()/100);
+        let h = 0;
+        let m = 0;
+
+        while (s > 60) {
+            s /= 60;
+            m += 1;
+        }
+        s = Math.floor(s);
+
+        while (m > 60) {
+            m /= 60;
+            h += 1;
+        }
+        m = Math.floor(m);
+
+        return `${h}h ${m}m ${s}s`
+    }
+
     static createFromObject(obj) {
         let meeting = new Meeting();
         meeting.id = obj._id;
