@@ -1,6 +1,6 @@
 import {Event} from "../model/Event.js";
 import {EventFormView} from "../view/EventFormView.js";
-import {EventFormController} from "../controller/EventFormController.js";
+import {EventFormController} from "./EventFormController.js";
 
 import {storage} from "../storage/Storage.js";
 
