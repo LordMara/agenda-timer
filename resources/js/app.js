@@ -13,6 +13,7 @@ import {MeetingFormView} from "./addmeeting/meetingform/MeetingFormView.js";
 import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormController.js";
 
 
+// load existing meetings from local storage
 
 // get id base on local storage here
 let meeting = new Meeting(1 , "test", new Array());
@@ -25,8 +26,6 @@ meetingContainer.insertBefore(meetingFormView.element, meetingContainer.firstChi
 
 let buttonsController = new NewButtonController(meeting);
 let buttonsView = new NewMeetingsButtonsView(buttonsController);
-
-// load existing meetings from local storage
 
 // load first form
 let event = new Event();
