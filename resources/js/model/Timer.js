@@ -7,22 +7,6 @@ export class Timer {
         this._eventIndex = 0;
     }
 
-    start() {
-        let timer = this;
-        let stopper = setInterval(function () {
-            timer.countdown();
-            timer.setClocks();
-
-            if (timer.hasEventEnded()) {
-                timer.nextEvent();
-            }
-
-            if (timer.hasFinished()) {
-                clearInterval(stopper);
-            }
-        }, 1000);
-    }
-
     countdown() {
         this._meetingTime -= 1000;
         this._eventsTimes[this._eventIndex] -= 1000;
