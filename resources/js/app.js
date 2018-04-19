@@ -9,8 +9,8 @@ import {NewMeetingsButtonsView} from "./addmeeting/NewMeetingsButtonsView.js";
 import {EventFormView} from "./view/EventFormView.js";
 import {EventFormController} from "./controller/EventFormController.js";
 
-import {MeetingFormView} from "./addmeeting/meetingform/MeetingFormView.js";
-import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormController.js";
+import {MeetingFormView} from "./view/MeetingFormView.js";
+import {MeetingFormController} from "./controller/MeetingFormController.js";
 
 import {TimerController} from "./controller/TimerController.js";
 
