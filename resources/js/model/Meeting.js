@@ -1,5 +1,4 @@
 import {Event} from "./Event.js";
-import {Timer} from "./Timer.js";
 
 export class Meeting {
     constructor(id, name, events) {
@@ -30,25 +29,6 @@ export class Meeting {
 
     set events(events) {
         this._events = events;
-    }
-
-    render() {
-        return `<div id="meeting">
-                    <p id="name">${this.name}</p><p id="time">${Timer.renderTime(this.estimatedTime())}</p>
-                </div>
-                <div id="events">
-                    <ul>
-                        ${this.renderEvents()}
-                    </ul>
-                </div>`
-    }
-
-    renderEvents() {
-        let renderedEvents = '';
-        for (let event of this.events) {
-            renderedEvents += event.render();
-        }
-        return renderedEvents;
     }
 
     addEvent(event) {

@@ -1,5 +1,3 @@
-import {Timer} from "./Timer.js";
-
 export class Event {
     constructor(topic, time) {
         this._topic = topic;
@@ -20,12 +18,6 @@ export class Event {
 
     set time(time) {
         this._time = time;
-    }
-
-    render() {
-        return `<li>
-                    <p id="name">${this.topic}</p><p id="time">${Timer.renderTime(this._time)}</p>
-                </li>`;
     }
 
     static createFromObject(obj){
