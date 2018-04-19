@@ -15,20 +15,33 @@ import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormControl
 import {TimerController} from "./controller/TimerController.js";
 
 import {storage} from "./storage/Storage.js";
+import {MeetingView} from "./view/MeetingView.js";
 
 
-// load existing meetings from local storage
 // storage object in creation before import load all objects
-
+// load existing meetings from local storage and list them at site
+let meetingView = new MeetingView();
+for (let meeting of storage.meetings) {
+    meetingView.meeting = meeting;
+    meetingView.createLink(new TimerController(meeting));
+}
 
 // get id base on local storage here
 let meeting = new Meeting(null, "Edit me!", new Array());
+
 
 // create form for meeting name
 let meetingFormController = new MeetingFormController(meeting);
 let meetingFormView = new MeetingFormView(meetingFormController);
 let meetingContainer = document.querySelector("#form-container");
-meetingContainer.insertBefore(meetingFormView.element, meetingContainer.firstChild);
+
+
+if (meetingContainer.firstChild === null) {
+    meetingContainer.appendChild(meetingFormView.element);
+} else {
+    meetingContainer.insertBefore(meetingFormView.element, meetingContainer.firstChild);
+}
+
 
 let buttonsController = new NewButtonController(meeting);
 let buttonsView = new NewMeetingsButtonsView(buttonsController);
@@ -39,10 +52,3 @@ let eventFormController = new EventFormController(event, meeting);
 let eventFormView = new EventFormView(eventFormController);
 let eventContainer = document.querySelector("#form-container-inner");
 eventContainer.appendChild(eventFormView.element);
-
-// start meeting from meetings list
-function startMeeting(meeting) {
-    let ctrl = new TimerController(meeting);
-    ctrl.build();
-    ctrl.start();
-}
