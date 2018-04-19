@@ -6,10 +6,11 @@ export class EventFormView {
     }
 
     render() {
-        return `<form class="new-meeting">
+        return `<fieldset class="new-meeting">
+            <legend>Event topic:</legend>
             <input class="event-topic" type="text" name="event-topic" value=${this.controller.event.topic}>
             <input class="event-time" type="time" name="event-time" step="1" value=${this.controller.event.time}>
-        </form>`;
+        </fieldset>`;
     }
 
     createElement() {
