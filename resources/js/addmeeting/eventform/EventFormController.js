@@ -1,4 +1,4 @@
-export class FormController {
+export class EventFormController {
     constructor(event, meeting) {
         this.event = event;
         this.meeting = meeting;
@@ -6,7 +6,7 @@ export class FormController {
     }
 
     handleEventTitleChange(e) {
-        this.event.title = e.target.value;
+        this.event.topic = e.target.value;
     }
 
     handleEventTimeChange(e) {

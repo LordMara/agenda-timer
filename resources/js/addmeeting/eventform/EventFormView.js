@@ -1,4 +1,4 @@
-export class FormView {
+export class EventFormView {
     constructor(controller) {
         this.controller = controller;
         this.element = this.createElement();
