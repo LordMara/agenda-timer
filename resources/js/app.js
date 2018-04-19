@@ -12,8 +12,17 @@ import {EventFormController} from "./addmeeting/eventform/EventFormController.js
 import {MeetingFormView} from "./addmeeting/meetingform/MeetingFormView.js";
 import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormController.js";
 
+import {TimerController} from "./controller/TimerController.js";
+
 
 // load existing meetings from local storage
+
+
+function startMeeting(meeting) {
+    let ctrl = new TimerController(meeting);
+    ctrl.build();
+    ctrl.start();
+}
 
 // get id base on local storage here
 let meeting = new Meeting(null, "Edit me!", new Array());
