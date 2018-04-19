@@ -4,9 +4,8 @@ import {Event} from "./model/Event.js";
 import {Meeting} from "./model/Meeting.js";
 import {NewButtonController} from "./addmeeting/NewMeetingButtonsController.js"
 import {NewMeetingsButtonsView} from "./addmeeting/NewMeetingsButtonsView.js";
-import {FormView} from "./addmeeting/FormView.js";
-import {FormController} from "./addmeeting/FormController.js";
-
+import {EventFormView} from "./addmeeting/eventform/EventFormView.js";
+import {EventFormController} from "./addmeeting/eventform/EventFormController.js";
 
 let meeting = new Meeting(1 , "test", new Array());
 let buttonsController = new NewButtonController(meeting);
@@ -16,7 +15,7 @@ let buttonsView = new NewMeetingsButtonsView(buttonsController);
 
 // load first form
 let event = new Event();
-let formController = new FormController(event, meeting);
-let formView = new FormView(formController);
+let formController = new EventFormController(event, meeting);
+let formView = new EventFormView(formController);
 let container = document.querySelector("#form-container-inner");
 container.appendChild(formView.element);
