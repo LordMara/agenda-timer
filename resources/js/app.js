@@ -16,7 +16,7 @@ import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormControl
 // load existing meetings from local storage
 
 // get id base on local storage here
-let meeting = new Meeting(1 , "test", new Array());
+let meeting = new Meeting(null, "Edit me!", new Array());
 
 // create form for meeting name
 let meetingFormController = new MeetingFormController(meeting);
@@ -28,7 +28,7 @@ let buttonsController = new NewButtonController(meeting);
 let buttonsView = new NewMeetingsButtonsView(buttonsController);
 
 // load first form
-let event = new Event();
+let event = new Event("Edit me!", 0);
 let eventFormController = new EventFormController(event, meeting);
 let eventFormView = new EventFormView(eventFormController);
 let eventContainer = document.querySelector("#form-container-inner");
