@@ -2,17 +2,21 @@
 
 import {Event} from "./model/Event.js";
 import {Meeting} from "./model/Meeting.js";
+
+import {NewButtonController} from "./addmeeting/NewMeetingButtonsController.js"
+import {NewMeetingsButtonsView} from "./addmeeting/NewMeetingsButtonsView.js";
+
+import {EventFormView} from "./addmeeting/eventform/EventFormView.js";
+import {EventFormController} from "./addmeeting/eventform/EventFormController.js";
+
+import {MeetingFormView} from "./addmeeting/meetingform/MeetingFormView.js";
+import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormController.js";
+
 import {TimerController} from "./controller/TimerController.js";
 
 
-function getTestMeeting() {
-    let meeting = new Meeting(1, 'creating meeting host', []);
-    meeting.addEvent(new Event('adding a host class to perform meeting in real time', 30000));
-    meeting.addEvent(new Event('research about time in js and display', 60000));
-    meeting.addEvent(new Event('in-real-time implementation', 30000));
+// load existing meetings from local storage
 
-    return meeting;
-}
 
 function startMeeting(meeting) {
     let ctrl = new TimerController(meeting);
@@ -20,4 +24,21 @@ function startMeeting(meeting) {
     ctrl.start();
 }
 
-startMeeting(getTestMeeting());
+// get id base on local storage here
+let meeting = new Meeting(null, "Edit me!", new Array());
+
+// create form for meeting name
+let meetingFormController = new MeetingFormController(meeting);
+let meetingFormView = new MeetingFormView(meetingFormController);
+let meetingContainer = document.querySelector("#form-container");
+meetingContainer.insertBefore(meetingFormView.element, meetingContainer.firstChild);
+
+let buttonsController = new NewButtonController(meeting);
+let buttonsView = new NewMeetingsButtonsView(buttonsController);
+
+// load first form
+let event = new Event("Edit me!", 0);
+let eventFormController = new EventFormController(event, meeting);
+let eventFormView = new EventFormView(eventFormController);
+let eventContainer = document.querySelector("#form-container-inner");
+eventContainer.appendChild(eventFormView.element);
