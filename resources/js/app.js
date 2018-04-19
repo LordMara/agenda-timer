@@ -23,7 +23,7 @@ import {MeetingView} from "./view/MeetingView.js";
 let meetingView = new MeetingView();
 for (let meeting of storage.meetings) {
     meetingView.meeting = meeting;
-    meetingView.createLink(new TimerController(meeting));
+    meetingView.createLink(new TimerController(meeting), new NewButtonController(meeting));
 }
 
 // get id base on local storage here
