@@ -14,8 +14,11 @@ import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormControl
 
 import {TimerController} from "./controller/TimerController.js";
 
+import {storage} from "./storage/Storage.js";
+
 
 // load existing meetings from local storage
+// storage object in creation before import load all objects
 
 
 // get id base on local storage here
