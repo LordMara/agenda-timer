@@ -1,8 +1,9 @@
 import {Event} from "./Event.js";
+import {IdGenerator} from "../helper/IdGenerator.js";
 
 export class Meeting {
     constructor(id, name, events) {
-        this._id = id;
+        this._id = new IdGenerator(id).id;
         this._name = name;
         this._events = events;
     }
