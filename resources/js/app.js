@@ -18,12 +18,6 @@ import {TimerController} from "./controller/TimerController.js";
 // load existing meetings from local storage
 
 
-function startMeeting(meeting) {
-    let ctrl = new TimerController(meeting);
-    ctrl.build();
-    ctrl.start();
-}
-
 // get id base on local storage here
 let meeting = new Meeting(null, "Edit me!", new Array());
 
@@ -42,3 +36,10 @@ let eventFormController = new EventFormController(event, meeting);
 let eventFormView = new EventFormView(eventFormController);
 let eventContainer = document.querySelector("#form-container-inner");
 eventContainer.appendChild(eventFormView.element);
+
+// start meeting from meetings list
+function startMeeting(meeting) {
+    let ctrl = new TimerController(meeting);
+    ctrl.build();
+    ctrl.start();
+}
