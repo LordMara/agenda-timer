@@ -10,7 +10,7 @@ export class NewButtonController {
     }
 
     handleAddEvent(e) {
-        let event = new Event();
+        let event = new Event("Edit me!", 0);
         let formController = new EventFormController(event, this.meeting);
         let formView = new EventFormView(formController);
         let container = document.querySelector("#form-container-inner");
