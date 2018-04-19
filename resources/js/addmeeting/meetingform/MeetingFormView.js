@@ -9,7 +9,7 @@ export class MeetingFormView {
         return `<form>
             <fieldset class="new-meeting">
                 <legend>Meeting name:</legend>
-                <input class="meeting-name" type="text" name="meeting-name" value=${this.controller.meeting.name}>
+                <input class="meeting-name" type="text" name="meeting-name" value='${this.controller.meeting.name}'>
             </fieldset>
         </form>`;
     }
