@@ -1,6 +1,8 @@
 import {Event} from "../model/Event.js";
-import {FormView} from "./FormView.js";
-import {FormController} from "./FormController.js";
+import {EventFormView} from "./eventform/EventFormView.js";
+import {EventFormController} from "./eventform/EventFormController.js";
+
+import {storage} from "../storage/Storage.js";
 
 export class NewButtonController {
     constructor(meeting) {
@@ -9,12 +11,14 @@ export class NewButtonController {
 
     handleAddEvent(e) {
         let event = new Event();
-        let formController = new FormController(event, this.meeting);
-        let formView = new FormView(formController);
+        let formController = new EventFormController(event, this.meeting);
+        let formView = new EventFormView(formController);
         let container = document.querySelector("#form-container-inner");
         container.appendChild(formView.element);
     }
 
     handleSubmit(e) {
+        storage.add(this.meeting);
+        storage.save();
     }
 }
