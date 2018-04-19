@@ -6,6 +6,15 @@ class Storage {
         this.load();
     }
 
+
+    get meetings() {
+        return this._meetings;
+    }
+
+    set meetings(value) {
+        this._meetings = value;
+    }
+
     add(meeting){
         this._meetings.add(meeting);
         this.save();
