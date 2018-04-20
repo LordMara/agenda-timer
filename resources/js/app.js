@@ -3,14 +3,14 @@
 import {Event} from "./model/Event.js";
 import {Meeting} from "./model/Meeting.js";
 
-import {NewButtonController} from "./addmeeting/NewMeetingButtonsController.js"
-import {NewMeetingsButtonsView} from "./addmeeting/NewMeetingsButtonsView.js";
+import {NewButtonController} from "./controller/NewMeetingButtonsController.js"
+import {NewMeetingsButtonsView} from "./view/NewMeetingsButtonsView.js";
 
-import {EventFormView} from "./addmeeting/eventform/EventFormView.js";
-import {EventFormController} from "./addmeeting/eventform/EventFormController.js";
+import {EventFormView} from "./view/EventFormView.js";
+import {EventFormController} from "./controller/EventFormController.js";
 
-import {MeetingFormView} from "./addmeeting/meetingform/MeetingFormView.js";
-import {MeetingFormController} from "./addmeeting/meetingform/MeetingFormController.js";
+import {MeetingFormView} from "./view/MeetingFormView.js";
+import {MeetingFormController} from "./controller/MeetingFormController.js";
 
 import {TimerController} from "./controller/TimerController.js";
 
@@ -23,7 +23,7 @@ import {MeetingView} from "./view/MeetingView.js";
 let meetingView = new MeetingView();
 for (let meeting of storage.meetings) {
     meetingView.meeting = meeting;
-    meetingView.createLink(new TimerController(meeting));
+    meetingView.createLink(new TimerController(meeting), new NewButtonController(meeting));
 }
 
 // get id base on local storage here

@@ -39,9 +39,12 @@ export class MeetingView {
         document.getElementById('container').innerHTML = this.render();
     }
 
-    createLink(timerController) {
+    createLink(timerController, newButtonController) {
         let li = document.createElement('li');
         let button = document.createElement('button');
+        let buttonRemove = document.createElement('button');
+        buttonRemove.className = "removeButton";
+        li.className = "listToRemove";
         button.onclick = function() {
             document.body.innerHTML = `<div id="container"></div>`;
             timerController.build();
@@ -49,6 +52,10 @@ export class MeetingView {
         };
         button.innerHTML = this.renderLink();
         li.appendChild(button);
+        document.getElementById('meetings-list').getElementsByTagName('ul')[0].appendChild(li);
+        buttonRemove.addEventListener("click", newButtonController.handleRemove.bind(newButtonController));
+        buttonRemove.innerText = "x";
+        li.appendChild(buttonRemove);
         document.getElementById('meetings-list').getElementsByTagName('ul')[0].appendChild(li);
     }
 }

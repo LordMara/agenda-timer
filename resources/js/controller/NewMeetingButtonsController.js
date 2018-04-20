@@ -1,6 +1,6 @@
 import {Event} from "../model/Event.js";
-import {EventFormView} from "./eventform/EventFormView.js";
-import {EventFormController} from "./eventform/EventFormController.js";
+import {EventFormView} from "../view/EventFormView.js";
+import {EventFormController} from "./EventFormController.js";
 
 import {storage} from "../storage/Storage.js";
 
@@ -20,5 +20,13 @@ export class NewButtonController {
     handleSubmit(e) {
         storage.add(this.meeting);
         storage.save();
+        location.reload();
+    }
+
+    handleRemove(e) {
+        e.target.closest('.listToRemove').remove();
+        storage.remove(this.meeting);
+        delete this.model;
+        delete this;
     }
 }
