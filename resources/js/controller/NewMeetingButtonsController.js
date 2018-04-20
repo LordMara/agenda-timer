@@ -20,6 +20,7 @@ export class NewButtonController {
     handleSubmit(e) {
         storage.add(this.meeting);
         storage.save();
+        location.reload();
     }
 
     handleRemove(e) {
