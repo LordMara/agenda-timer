@@ -21,4 +21,11 @@ export class NewButtonController {
         storage.add(this.meeting);
         storage.save();
     }
+
+    handleRemove(e) {
+        e.target.closest('.listToRemove').remove();
+        storage.remove(this.meeting);
+        delete this.model;
+        delete this;
+    }
 }
