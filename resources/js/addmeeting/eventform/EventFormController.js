@@ -28,9 +28,9 @@ export class EventFormController {
     }
 
     handleHoursChange(e) {
-        this.event.time -= this._hours * 36 * 1000 * 1000;
+        this.event.time -= this._hours * 36 * 1000 * 100;
         this._hours = parseInt(e.target.value);
-        this.event.time += this._hours * 36 * 1000 * 1000;
+        this.event.time += this._hours * 36 * 1000 * 100;
         console.log(this);
     }
 
