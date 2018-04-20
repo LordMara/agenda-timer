@@ -4,7 +4,7 @@ import {Event} from "./model/Event.js";
 import {Meeting} from "./model/Meeting.js";
 
 import {NewButtonController} from "./controller/NewMeetingButtonsController.js"
-import {NewMeetingsButtonsView} from "./controller/NewMeetingsButtonsView.js";
+import {NewMeetingsButtonsView} from "./view/NewMeetingsButtonsView.js";
 
 import {EventFormView} from "./view/EventFormView.js";
 import {EventFormController} from "./controller/EventFormController.js";
